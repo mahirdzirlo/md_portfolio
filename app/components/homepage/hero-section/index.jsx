@@ -22,9 +22,9 @@ function HeroSection() {
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-            Hi, <br />
-            This is <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Senior `}
+            Hi, <br />I am
+            <span className=" text-pink-500">{` ${personalData.name}`}</span>
+            {`, a Senior `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>.
           </h1>
 
@@ -96,12 +96,14 @@ function HeroSection() {
               <div className="ml-4 lg:ml-8 mr-2">
                 <span className=" text-white">skills:</span>
                 <span className="text-gray-400">{`['`}</span>
-                {skillsData.map((skill, index) => (
+                {skillsData.map((skill, index, { length }) => (
                   <>
                     <span key={index} className="text-amber-300">
                       {skill}
                     </span>
-                    <span className="text-gray-400">{"', '"}</span>
+                    {index !== length - 1 && (
+                      <span className="text-gray-400">{"', '"}</span>
+                    )}
                   </>
                 ))}
 
